@@ -47,10 +47,10 @@ module "alb" {
   name    = "blog-alb"
   vpc_id  = module.blog_vpc.vpc_id
   subnets = module.blog_vpc.public_subnets
-  security_groups = module.blog_sg.security_group_id
+  security_groups = [module.blog_sg.security_group_id]
 
   target_groups = {
-    ex-instance = {
+    ex_instance = {
       name_prefix      = "blog-"
       backend_protocol = "HTTP"
       backend_port     = 80
@@ -64,7 +64,7 @@ module "alb" {
       protocol        = "HTTP"
 
       forward = {
-        target_group_key = "ex-instance"
+        target_group_key = "ex_instance"
       }
     }
   }
