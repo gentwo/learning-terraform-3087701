@@ -6,7 +6,7 @@ module "qa" {
         network_prefix = "10.1"
     }
 
-    autoscale {
+    autoscale = {
         min = 1
         max = 1
     }
